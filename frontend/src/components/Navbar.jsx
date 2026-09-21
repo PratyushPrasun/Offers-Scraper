@@ -1,9 +1,14 @@
 import React from 'react';
 import { Zap, RefreshCw, Menu } from 'lucide-react';
+import { calculateOfferSavings } from '../utils/bankTheme';
 
-export default function Navbar({ offers = [], onRefresh, isRefreshing, onToggleSidebar }) {
+export default function Navbar({ offers = [], onRefresh, isRefreshing, onToggleSidebar, cartAmount = 0, unlockedIds = new Set() }) {
   const total = offers.length;
-  const unlockedCount = offers.filter(o => (o.status || '').toLowerCase() === 'unlocked').length;
+    const unlockedCount = offers.filter(o => {
+      const offerKey = o.promo_code || o.title;
+      const isManuallyUnlocked = unlockedIds instanceof Set ? unlockedIds.has(offerKey) : false;
+      return calculateOfferSavings(o, cartAmount, isManuallyUnlocked).isUnlocked;
+    }).length;
 
   return (
     <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200/80">

@@ -154,6 +154,8 @@ export default function App() {
       {/* Slim top navbar */}
       <Navbar
         offers={offers}
+        cartAmount={cartAmount}
+        unlockedIds={unlockedIds}
         onRefresh={loadOffers}
         isRefreshing={isRefreshing}
         onToggleSidebar={() => setSidebarOpen(!sidebarOpen)}
