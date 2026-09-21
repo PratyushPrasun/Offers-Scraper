@@ -8,18 +8,18 @@ An end-to-end automation and visualization tool that scrapes bank and credit/deb
 
 ```mermaid
 flowchart TD
-    A[User Input / Trigger] -->|python scrape.py| B[1. Browser Automation]
-    B -->|Playwright Chromium| C[Zepto Web App: Cart & Offers Drawer]
-    C -->|Extracts raw DOM text| D[2. Parsing & Normalization]
-    D -->|parser.py: Regex & Rules| E[(offers.json)]
+    A["User Input / Trigger"] -->|"python scrape.py"| B["1. Browser Automation"]
+    B -->|"Playwright Chromium"| C["Zepto Web App: Cart & Offers Drawer"]
+    C -->|"Extracts raw DOM text"| D["2. Parsing & Normalization"]
+    D -->|"parser.py: Regex & Rules"| E[("offers.json")]
     
-    E -->|python display.py [flags]| F[3a. Rich Terminal CLI]
-    E -->|python server.py| G[3b. Python HTTP API & Static Server]
-    E -->|npm run dev| H[3c. Vite React Frontend]
+    E -->|"python display.py [flags]"| F["3a. Rich Terminal CLI"]
+    E -->|"python server.py"| G["3b. Python HTTP API & Static Server"]
+    E -->|"npm run dev"| H["3c. Vite React Frontend"]
     
-    F --> I[Formatted CLI Table / Filtered JSON]
-    G --> J[Web Dashboard on :5050]
-    H --> K[Web Dashboard on :5173]
+    F --> I["Formatted CLI Table / Filtered JSON"]
+    G --> J["Web Dashboard on :5050"]
+    H --> K["Web Dashboard on :5173"]
 ```
 
 ---
